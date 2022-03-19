@@ -28,6 +28,9 @@ class Person {
         this.name = name;
         this.age = age;
     }
+    getLegal(){
+        return this.age > 18;
+    }
 }
 
 console.log(new Person('Duaa', 30));
