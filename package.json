@@ -59,13 +59,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Duaazayed/Duaazayed.git"
+    "url": ""
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Duaazayed/Duaazayed/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/Duaazayed/Duaazayed#readme",
+  "homepage": "",
   "description": ""
 }
