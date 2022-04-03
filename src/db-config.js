@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const queries = require('../src/queries/tasks.queries');
+const queries = require('../src/queries/reservation.queries');
 const host = process.env.DB_HOST || 'localhost'; //get the host from environment or use default
 const user = process.env.DB_USER || 'root'; //get the user fo DB from environment or use default
 const password = process.env.DB_PASS || 'password';
