@@ -1,5 +1,5 @@
     
-    exports.CREATE_TASKS_TABLE = `CREATE TABLE users(
+    exports.CREATE_USERS_TABLE = `CREATE TABLE users(
     user_id int NOT NULL AUTO_INCREMENT,
     username varchar(255) NOT NULL UNIQUE,
     email varchar(255) NOT NULL,

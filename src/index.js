@@ -8,7 +8,7 @@ const userRoutes = require('./routes/user.routes');
 const middleware = require('../src/middleware/errors.middleware');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 const logLevel = process.env.LOG_LEVEL || 'dev';
 app.use(logger(logLevel));
 app.use(bodyParser.urlencoded({ extended: false}));

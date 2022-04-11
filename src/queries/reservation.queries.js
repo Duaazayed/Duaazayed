@@ -1,6 +1,6 @@
 exports.CREATE_RESERVATION_TABLE = `CREATE TABLE reservation(
     reservation_id int NOT NULL AUTO_INCREMENT,
-    username int NOT NULL,
+    username varchar(255) NOT NULL,
     bike_id int NOT NULL,
     reservation_date date NOT NULL,
     reservation_start_time time NOT NULL,
