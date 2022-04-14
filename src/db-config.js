@@ -10,8 +10,7 @@ const database = process.env.DB_DATABASE || 'gbsh'; //this reverse to Golden Bik
 
 module.exports= async(params)=>
 new Promise(async(resolve, reject)=>{
-    const 
-    con = mysql.createConnection({
+    const con = mysql.createConnection({
     host,
     user,
     password,

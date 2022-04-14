@@ -1,4 +1,3 @@
-//const jwt = require('jsonwebtoken');
 const bcrybt = require('bcrypt');
 
 const connection = require('../db-config');
@@ -6,9 +5,10 @@ const {
     GET_ME_BY_USERNAME,
     GET_ME_BY_USERNAME_WITH_PASSWORD,
     INSERT_NEW_USER,
-}= require('../queries/user.queries');
+} = require('../queries/user.queries');
 const query= require('../utils/query');
 const { refreshTokens, generateToken}= require('../utils/jwt-helpers');
+const { status } = require('express/lib/response');
 
 exports.register = async(req,res)=>{
 const passwordHash = bcrybt.hashSync(req.body.password);
@@ -26,7 +26,8 @@ if( user.lenght==1){
     res.status(403).send({msg: 'User already exists'});
 }else{
     const result = await query(con, INSERT_NEW_USER, params).catch((err)=>{
-        res.status(500)
+        res
+        .status(500)
         .send({msg: 'Could not register user. please try again later'});
     });
     if( result.lenght){
@@ -54,12 +55,8 @@ exports.login= async(req, res)=>{
     if(!validPass){
         res.status(400).send({msg: 'Invalid password'});
     }else{
-        const accessToken = generateAccessToken(user[0].user_id,
-             {expiresIn: 86400,
-            });
-        const refreshToken = generateRefreshToken(user[0].user_id,
-             {expiresIn: 86400,
-            });
+        const accessToken = generateAccessToken(user[0].user_id,{expiresIn: 86400 });
+        const refreshToken = generateRefreshToken(user[0].user_id, {expiresIn: 86400 });
     refreshTokens.push(refreshToken);
     res
     .header('access_token', accessToken)
@@ -71,10 +68,9 @@ exports.login= async(req, res)=>{
         expires_in: 86400,
         refresh_token: refreshToken,
     });
-    }
-    res.status(403).send({msg: 'Invalid Token'});
-
-};
+    }}
+    res.status(403).send({msg: 'Invalid Login'});
+    };
 exports.token=(req, res)=>{
     const refreshToken = req.body.token;
     if(!refreshToken){
@@ -101,8 +97,14 @@ exports.token=(req, res)=>{
     }
     res.status(403).send({msg: 'Invalid Token'});
     };
+    
 exports.logout =(req, res)=>{
-    const {token} = req.body;
-    refreshTokens= refreshTokens.filter((t)=> t !== token);
+    const refreshToken = req.body.token;
+    refreshTokens= refreshTokens.filter((t)=> t !== refreshToken);
+    [
+        'token1',
+        'token2',
+        'token3',
+    ]
     res.send('Logout successful');
 };
