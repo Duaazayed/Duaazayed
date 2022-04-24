@@ -1,10 +1,10 @@
-const controllers = require('../controllers/reservation.controllers');
+const {getAllReservation,getReservation,updateReservation,createReservation,deleteReservation} = require('../controllers/reservation.controllers');
 const express = require('express');
 const Router  = require('express');
 
 const reservationRoutes = express.Router();
-reservationRoutes.get('/', controllers.getAllReservation).post('/', controllers.createReservation);
-reservationRoutes.get('/:reservation_id', controllers.getReservation);
-reservationRoutes.put('/:reservation_id', controllers.updateReservation);
-reservationRoutes.delete('/:reservation_id', controllers.deleteReservation);
+reservationRoutes.get('api/reservation/', getAllReservation).post('api/reservation/', createReservation);
+reservationRoutes.get('api/reservation/:reservation_id', getReservation);
+reservationRoutes.put('api/reservation/:reservation_id', updateReservation);
+reservationRoutes.delete('api/reservation/:reservation_id', deleteReservation);
 module.exports = reservationRoutes;
