@@ -4,6 +4,6 @@ const canAccess = require('../middleware/auth.middleware');
 
 const userRoutes= express.Router();
 
-userRoutes.get('/api/user/me', canAccess, getMe);
-userRoutes.post('/api/user/me/update', canAccess, updateMe);
+userRoutes.get('/me', canAccess, getMe);
+userRoutes.post('/me/update', canAccess, updateMe);
 module.exports= userRoutes;
